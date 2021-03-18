@@ -1,0 +1,156 @@
+.App-homePage-wrapper {
+  position: relative;
+  top: 50%;
+  transform: translate(0px, -50%);
+}
+.home-page-wrapper {
+  text-align: center;
+  color: #ff5155;
+}
+.home-page-wrapper .heading-text {
+  font-size: 64px;
+  margin-bottom: 0px;
+  line-height: 64px;
+  margin-top: 20px;
+}
+.home-page-wrapper .sub-text {
+  font-size: 24px;
+}
+.sub-text::before,
+.sub-text::after {
+  background-color: #ff5155;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  vertical-align: middle;
+  width: 5%;
+  margin: 0px 5px;
+}
+.form input,
+.form select {
+  padding: 10px 5px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 5px auto;
+  min-height: 50px;
+  font-size: 24px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.form .user-input {
+  background-color: #97a1a3;
+  color: rgba(0, 0, 0, 0.8);
+}
+.form select {
+  background: transparent;
+  color: #97a5a7;
+}
+.form select option {
+  background-color: #97a1a3;
+  color: #032228;
+}
+.start-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #ff5155;
+  cursor: pointer;
+  background: transparent url(./images/Icon\ awesome-play.png) no-repeat 0px
+    center;
+  height: 55px;
+  font-size: 26px;
+}
+.stop-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #ff5155;
+  cursor: pointer;
+  background: transparent url(images/Icon\ metro-cross.svg) no-repeat 0px center;
+  height: 55px;
+  font-size: 44px;
+  width: 100%;
+  max-width: 380px;
+  line-height: 1.21;
+  background-size: 70px;
+  position: absolute;
+  bottom: 30px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  color: #ff5155;
+  font-size: 44px;
+  padding-top: 20px;
+}
+.playerName::before {
+  content: url(./images/Icon\ material-person.svg);
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+.gameLevel::before {
+  content: url(./images/Icon\ awesome-gamepad.svg);
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+.Scoreboard {
+  color: white;
+  border: 1px solid #ff5155;
+  width: 300px;
+  /* width: max-content; */
+  padding: 20px 50px;
+  margin-left: 15px;
+  min-height: 60vh;
+}
+.Scoreboard--heading {
+  color: #ff5155;
+  font-size: 30px;
+  text-align: center;
+}
+.Scoreboard--subheading {
+  color: #ff5155;
+  font-size: 11px;
+}
+.gameArea {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.gameWord{
+  font-size: 92px;
+  line-height: 1.2;
+}
+.gameInput {
+  opacity: 0.59;
+  border-radius: 5px;
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
+  background-color: var(--white);
+  padding: 10px;
+  min-width: 400px;
+  font-size: 35px;
+  line-height: 1.2;
+}
+
+@media (max-width: 575.98px) {
+  .home-page-wrapper .heading-text {
+    font-size: 52px;
+  }
+  .sub-text::before,
+  .sub-text::after {
+    width: 10%;
+  }
+}
