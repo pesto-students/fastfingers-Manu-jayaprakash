@@ -10,12 +10,6 @@ export default class Timer extends Component {
     return `${seconds.replace(".", ":")}`;
   };
   
-  componentDidMount() {
-    // console.log(this.state.timeLeft);
-    // const now = new Date();
-    // console.log(now.getTime())
-  }
-
   render() {
     return <div>{this.formatTimeLeft(3000)}</div>;
   }
