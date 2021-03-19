@@ -9,7 +9,7 @@ export default class GamePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      difficultyLevel: localStorage.getItem("level"),
+      difficultyLevel: localStorage.getItem("level") || "Easy",
       difficultyFactor: "",
       currentWord: "",
       currentScore: 0,
