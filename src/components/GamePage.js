@@ -9,46 +9,76 @@ export default class GamePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      difficultyLevel: 1,
+      difficultyLevel: localStorage.getItem("level"),
+      difficultyFactor: "",
       currentWord: "",
       currentScore: 0,
+      timer: "",
     };
   }
 
   componentDidMount() {
-    console.log(Dictionary);
-    const test = this.getCurrentWord(3)
-    console.log(test)
+    const word = this.getCurrentWord(this.state.difficultyLevel)
+    console.log(word);
+    this.setState({
+      currentWord : word
+    })
+    this.initialiseDifficultyFactor(word);
   }
   getCurrentWord(level) {
-    if (level <= 1) {
+    if (level === "Easy") {
       const disc = Dictionary.filter(function(word){
         return word.length<=4
       });
       return disc[Math.floor(Math.random() * disc.length)];
     }
 
-    if (level > 1 && level <= 2) {
+    if (level === "Medium") {
       const disc = Dictionary.filter(
         (word) => word.length >= 5 && word.length <= 8
       );
       return disc[Math.floor(Math.random() * disc.length)].toUpperCase();
     }
 
-    if (level > 2) {
+    if (level === "Hard") {
       const disc = Dictionary.filter((word) => word.length > 8);
       return disc[Math.floor(Math.random() * disc.length)].toUpperCase();
     }
   }
+  initialiseDifficultyFactor(word){
+    const {difficultyLevel} = this.state;
+    if(difficultyLevel ==="Easy"){
+      this.setState({
+        difficultyFactor : 1
+      })
+      this.initialiseTimer(word,1);
+    }else if(difficultyLevel ==="Medium"){
+      this.setState({
+        difficultyFactor : 1.5
+      })
+      this.initialiseTimer(word,1.5);
+    }else{
+      this.setState({
+        difficultyFactor : 2
+      })
+      this.initialiseTimer(word,2);
+    }
+  }
+  initialiseTimer(word,difficulty){
+    this.setState({
+      timer: word.length / difficulty
+    })
+  }
   render() {
+    const {currentWord,timer} = this.state;
     return (
       <div>
         <GamePageHeader />
         <Scoreboard />
         <Input type="button" value="STOP GAME" className="stop-btn" />
         <div className="gameArea">
-          <Timer />
-          <label className="gameWord">Wordszvzc</label>
+          <Timer  time={timer}/>
+          <label className="gameWord">{currentWord}</label>
           <Input className="gameInput"> type="text"</Input>
         </div>
       </div>

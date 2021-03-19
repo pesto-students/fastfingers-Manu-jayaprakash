@@ -6,10 +6,12 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: ""
+      userName: "",
+      difficultyLevel: "",
     };
   }
-  handleStartGame = () => {
+  handleStartGame = (event) => {
+    event.preventDefault();
     let gameData = JSON.parse(localStorage.getItem("gameData") || "[]");
     if (gameData.length < 1) {
       gameData.push({ userName: this.state.userName, gameHistory: [] });
@@ -17,7 +19,8 @@ export default class HomePage extends Component {
       for (let i of gameData) {
         if (i.userName === this.state.userName) {
           localStorage.setItem("activeUser", this.state.userName);
-          window.location = window.location.origin+ "/game"
+          localStorage.setItem("level", this.state.difficultyLevel);
+          window.location = window.location.origin + "/game";
           return;
         }
       }
@@ -25,13 +28,20 @@ export default class HomePage extends Component {
     }
     localStorage.setItem("gameData", JSON.stringify(gameData));
     localStorage.setItem("activeUser", this.state.userName);
-    window.location = window.location.origin+ "/game"
+    localStorage.setItem("level", this.state.difficultyLevel);
+    window.location = window.location.origin + "/game";
   };
   handleUserName = (e) => {
     this.setState({
       userName: e.target.value,
     });
-    console.log(this.state.localData);
+    console.log(this.state.userName);
+  };
+  handleDifficultyLevel = (e) => {
+    this.setState({
+      difficultyLevel: e.target.value,
+    });
+    console.log(this.state.difficultyLevel);
   };
   render() {
     return (
@@ -41,26 +51,22 @@ export default class HomePage extends Component {
         <p className="sub-text">
           <span>the ultimate typing game</span>
         </p>
-        <div className="form">
+        <form className="form" onSubmit={this.handleStartGame}>
           <Input
             type="text"
             className="user-input"
             placeholder="TYPE YOUR NAME"
             handleUserName={this.handleUserName}
+            required="required"
           />
-          <select className="game-difficulty">
+          <select className="game-difficulty"  onChange={this.handleDifficultyLevel} value={this.state.difficultyLevel} required>
             <option hidden>DIFFICULTY LEVEL</option>
             <option>Easy</option>
-            <option value="">Medium</option>
-            <option value="">Hard</option>
+            <option>Medium</option>
+            <option>Hard</option>
           </select>
-          <Input
-            type="button"
-            value="START GAME"
-            className="start-btn"
-            handleStartGame={this.handleStartGame}
-          />
-        </div>
+          <Input type="submit" value="START GAME" className="start-btn" />
+        </form>
       </div>
     );
   }
