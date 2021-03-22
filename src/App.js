@@ -2,6 +2,8 @@ import React from "react";
 import "./styles.css";
 import HomePage from "./components/Homepage";
 import GamePage from "./components/GamePage";
+import GameEnd from "./components/GameEnd";
+import GamePageHeader from "./components/GamePageHeader";
 import Route from "./Route";
 
 function App() {
@@ -13,7 +15,11 @@ function App() {
         </div>
       </Route>
       <Route path="/game">
+        <GamePageHeader/> 
         <GamePage />
+      </Route>
+      <Route path="/end">
+        <GameEnd />
       </Route>
     </div>
   );

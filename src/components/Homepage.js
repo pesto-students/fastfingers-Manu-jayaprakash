@@ -6,8 +6,8 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
-      difficultyLevel: "",
+      userName: localStorage.getItem("activeUser") || "",
+      difficultyLevel: localStorage.getItem("level") || "Easy",
     };
   }
   handleStartGame = (event) => {
@@ -29,6 +29,7 @@ export default class HomePage extends Component {
     localStorage.setItem("gameData", JSON.stringify(gameData));
     localStorage.setItem("activeUser", this.state.userName);
     localStorage.setItem("level", this.state.difficultyLevel);
+    localStorage.setItem("isGameStarted", true)
     window.location = window.location.origin + "/game";
   };
   handleUserName = (e) => {
@@ -43,6 +44,7 @@ export default class HomePage extends Component {
     });
     console.log(this.state.difficultyLevel);
   };
+
   render() {
     return (
       <div className="container home-page-wrapper">
@@ -56,7 +58,7 @@ export default class HomePage extends Component {
             type="text"
             className="user-input"
             placeholder="TYPE YOUR NAME"
-            handleUserName={this.handleUserName}
+            handleInput={this.handleUserName}
             required="required"
           />
           <select className="game-difficulty"  onChange={this.handleDifficultyLevel} value={this.state.difficultyLevel} required>

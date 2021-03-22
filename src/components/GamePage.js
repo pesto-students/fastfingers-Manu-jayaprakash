@@ -14,21 +14,28 @@ export default class GamePage extends Component {
       currentWord: "",
       currentScore: 0,
       timer: "",
+      userInput: "",
+      gameStatus: true
     };
   }
 
   componentDidMount() {
-    const word = this.getCurrentWord(this.state.difficultyLevel)
-    console.log(word);
-    this.setState({
-      currentWord : word
-    })
-    this.initialiseDifficultyFactor(word);
+    if(localStorage.getItem("activeUser")){
+      const word = this.getCurrentWord(this.state.difficultyLevel);
+      console.log(word);
+      this.setState({
+        currentWord: word,
+      });
+      this.initialiseDifficultyFactor(word);
+    }else{
+      window.location = window.location.origin + "";
+    }
+
   }
-  getCurrentWord(level) {
+  getCurrentWord(level=this.state.difficultyLevel) {
     if (level === "Easy") {
-      const disc = Dictionary.filter(function(word){
-        return word.length<=4
+      const disc = Dictionary.filter(function (word) {
+        return word.length <= 4;
       });
       return disc[Math.floor(Math.random() * disc.length)];
     }
@@ -45,41 +52,93 @@ export default class GamePage extends Component {
       return disc[Math.floor(Math.random() * disc.length)].toUpperCase();
     }
   }
-  initialiseDifficultyFactor(word){
-    const {difficultyLevel} = this.state;
-    if(difficultyLevel ==="Easy"){
+  initialiseDifficultyFactor(word) {
+    const { difficultyLevel } = this.state;
+    if (difficultyLevel === "Easy") {
       this.setState({
-        difficultyFactor : 1
-      })
-      this.initialiseTimer(word,1);
-    }else if(difficultyLevel ==="Medium"){
+        difficultyFactor: 1,
+      });
+      this.initialiseTimer(word, 1);
+    } else if (difficultyLevel === "Medium") {
       this.setState({
-        difficultyFactor : 1.5
-      })
-      this.initialiseTimer(word,1.5);
-    }else{
+        difficultyFactor: 1.5,
+      });
+      this.initialiseTimer(word, 1.5);
+    } else {
       this.setState({
-        difficultyFactor : 2
-      })
-      this.initialiseTimer(word,2);
+        difficultyFactor: 2,
+      });
+      this.initialiseTimer(word, 2);
     }
   }
-  initialiseTimer(word,difficulty){
+  initialiseTimer(word, difficulty) {
     this.setState({
-      timer: word.length / difficulty
+      timer: word.length / difficulty,
+    });
+  }
+  handleInput = (e) => {
+    this.setState({
+      userInput: e.target.value,
+    });
+    console.log(e.target.value.toUpperCase());
+    if(this.state.currentWord.toUpperCase() === e.target.value.toUpperCase()){
+      console.log("match");
+      const nextWord = this.getCurrentWord();
+      this.setState({
+        currentWord: nextWord,
+      });
+      console.log(nextWord);
+      this.initialiseDifficultyFactor(nextWord);
+      this.setState({
+        userInput:""
+      })
+    }
+  };
+  stopGame=()=>{
+    window.localStorage.setItem("activeUser","")
+    window.localStorage.setItem("score","")
+    window.location.pathname=""
+  }
+  isGameEnded = ()=>{
+    this.setState({
+      gameStatus :false
     })
   }
+
   render() {
-    const {currentWord,timer} = this.state;
+    const { currentWord, timer, userInput, gameStatus} = this.state;
+    const wordMatch = currentWord.split("").map((letter, index) => {
+      if (index < userInput.length) {
+        if (letter.toUpperCase() === userInput[index].toUpperCase()) {
+          return (
+            <span key={index} className="match">
+              {letter.toUpperCase()}
+            </span>
+          );
+        } else if (letter.toUpperCase() !== userInput[index].toUpperCase()) {
+          return (
+            <span key={index} className="notMatch">
+              {letter.toUpperCase()}
+            </span>
+          );
+        }
+      }
+
+      return <span key={index}>{letter.toUpperCase()}</span>;
+    });
     return (
       <div>
-        <GamePageHeader />
         <Scoreboard />
-        <Input type="button" value="STOP GAME" className="stop-btn" />
+        <Input type="button" value="STOP GAME" className="stop-btn" onClick={this.stopGame}/>
         <div className="gameArea">
-          <Timer  time={timer}/>
-          <label className="gameWord">{currentWord}</label>
-          <Input className="gameInput"> type="text"</Input>
+          <Timer time={Math.max(2,timer)*100} word={currentWord} gameStatus={this.isGameEnded}/>
+          <label className="gameWord">{wordMatch}</label>
+          <Input
+            className="gameInput"
+            type="text"
+            value={userInput}
+            handleInput={this.handleInput}
+          ></Input>
         </div>
       </div>
     );
