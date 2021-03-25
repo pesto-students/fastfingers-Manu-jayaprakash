@@ -49,7 +49,7 @@ export default function Game({hideHeader}) {
   };
 
   const updateDifficultyFactor = () => {
-    difficultyFactor.current += DIFFICULTY_INCREMENT_FACTOR;
+    difficultyFactor.current += 0.01;
     const revisedDifficulty = UpdateGameLevelByDifficultyFactor(
       difficultyFactor.current
     );
