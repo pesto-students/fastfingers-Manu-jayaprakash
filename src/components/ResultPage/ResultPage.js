@@ -50,11 +50,6 @@ export default function ResultPage({ playAgain }) {
         </div>
 
         <button className="end-game-button" onClick={playAgain}>
-          <img
-            className="reload-image"
-            src={reload_image}
-            alt="Reload Button"
-          />
           PLAY AGAIN
         </button>
 

@@ -133,27 +133,13 @@ body {
   background: transparent url(./assets/play.png) no-repeat 0;
   width: 75%;
   min-height: 50px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   background-color: transparent;
   border: none;
   outline: none;
-  /* border-radius: 8px;
-  width: 350px;
-  margin: 0 0 0 5px; */
   margin-top: 30px;
-  /* text-shadow: 0 0 16px rgba(0, 0, 0, 0.16); */
   font-family: Arial;
   font-size: 24px;
-  /* font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.21;
-  letter-spacing: normal;
-  text-align: left; */
   color: #ff5155;
-  /* cursor: pointer; */
 }
 .button-image {
   width: 35px;
@@ -248,29 +234,24 @@ body {
   margin: 15px 20px 3px 20px;
   padding: 32px 16.5px 29.2px 33px;
   border-radius: 15px;
-  border: solid 3px #ff5155;
+  border: solid 2px #ff5155;
 }
 
 .stop-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: transparent url(./assets/stop.png) no-repeat 0;
+  min-height: 50px;
+  background-size: 70px;
+  width: 300px;
   background-color: transparent;
   border: none;
   outline: none;
-  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
   font-family: Arial;
   font-size: 30px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.21;
-  letter-spacing: normal;
-  text-align: left;
   color: #ff5155;
   text-transform: uppercase;
   cursor: pointer;
 }
+
 .stop-image {
   width: 44px;
   height: 44px;
@@ -348,22 +329,17 @@ body {
   position: relative;
 }
 .end-game-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: transparent url(./assets/reload.png) no-repeat 0;
+  width: 280px;
+  text-align: right;
+  background-size: 45px;
+  min-height: 50px;
   background-color: transparent;
   border: none;
   outline: none;
-  padding: 1rem;
   cursor: pointer;
-  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
   font-family: Arial;
-  font-size: 40px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.2;
-  letter-spacing: normal;
+  font-size: 38px;
   color: #ff5155;
 }
 
@@ -526,14 +502,15 @@ body {
   .game-text-input {
     width: 80%;
   }
-  .quit-game-button {
+  .quit-game-button,
+  .stop-button {
     margin: 0 auto;
   }
   .start-button {
     width: 300px;
   }
   .home-title {
-    white-space:nowrap;
+    white-space: nowrap;
   }
 }
 
@@ -549,8 +526,6 @@ body {
     position: absolute;
     pointer-events: none;
 } */
-
-
 
 /* .selectDiv {
   position: relative;

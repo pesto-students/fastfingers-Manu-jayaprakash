@@ -115,11 +115,6 @@ export default function Game({hideHeader}) {
             <ScoreBoard />
           </section>
           <button className="stop-button" onClick={gameOver}>
-            <img
-              className="stop-image"
-              src={stop_image}
-              alt="Stop Game Button"
-            />
             Stop Game
           </button>
         </aside>
