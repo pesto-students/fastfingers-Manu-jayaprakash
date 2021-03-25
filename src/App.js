@@ -1,26 +1,11 @@
-import React from "react";
-import "./styles.css";
-import HomePage from "./components/Homepage";
-import GamePage from "./components/GamePage";
-import GameEnd from "./components/GameEnd";
-import GamePageHeader from "./components/GamePageHeader";
-import Route from "./Route";
+import React from 'react';
+import './App.css';
+import HomePage from './components/HomePage/HomePage'
 
 function App() {
   return (
     <div className="App">
-      <Route path="/">
-        <div className="App-homePage-wrapper">
-          <HomePage />
-        </div>
-      </Route>
-      <Route path="/game">
-        <GamePageHeader/> 
-        <GamePage />
-      </Route>
-      <Route path="/end">
-        <GameEnd />
-      </Route>
+      <HomePage />
     </div>
   );
 }

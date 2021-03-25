@@ -9,12 +9,7 @@ export default function GamePageHeader() {
   useEffect(() => {
     if (window.location.pathname === "/game") {
       const timeId = setInterval(() => {
-        // if (gameStatus) {
           timerLogicRef.current();
-        // }else{
-        //   // console.log(score)
-        //   clearInterval(timeId);
-        // }
       }, 1000);
 
       return () => {
