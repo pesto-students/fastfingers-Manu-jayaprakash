@@ -1,0 +1,380 @@
+.home-page-wrapper {
+  text-align: center;
+  color: #ff5155;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.home-page-wrapper .heading-text {
+  font-size: 64px;
+  margin-bottom: 0px;
+  line-height: 64px;
+  margin-top: 20px;
+}
+.home-page-wrapper .sub-text {
+  font-size: 24px;
+}
+.sub-text::before,
+.sub-text::after {
+  background-color: #ff5155;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  vertical-align: middle;
+  width: 5%;
+  margin: 0px 5px;
+}
+.form input,
+.form select {
+  padding: 10px 5px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 5px auto;
+  min-height: 50px;
+  font-size: 24px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.form .user-input {
+  background-color: #97a1a3;
+  color: rgba(0, 0, 0, 0.8);
+}
+.form select {
+  background: transparent;
+  color: #97a5a7;
+}
+.form select option {
+  background-color: #97a1a3;
+  color: #032228;
+}
+.home-error {
+  width: 100%;
+  height: 25px;
+  text-align: left;
+}
+.start-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #ff5155;
+  cursor: pointer;
+  background: transparent url(./images/Icon\ awesome-play.png) no-repeat 0px
+    center;
+  height: 55px;
+  font-size: 26px;
+  width: 100%;
+}
+.play-again-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #ff5155;
+  cursor: pointer;
+  background: transparent url(./images/Icon\ open-reload.png) no-repeat 0px
+    center;
+  height: 55px;
+  font-size: 36px;
+  /* width: 100%; */
+  width: 330px;
+  background-size: 45px;
+  max-width: 300px;
+}
+.stop-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #ff5155;
+  cursor: pointer;
+  background: transparent url(images/Icon\ metro-cross.svg) no-repeat 0px center;
+  height: 55px;
+  font-size: 44px;
+  width: 100%;
+  max-width: 380px;
+  line-height: 1.21;
+  background-size: 70px;
+  position: absolute;
+  bottom: 30px;
+}
+.quit-btn {
+  color: #ff5155;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 35px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 10%;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  color: #ff5155;
+  font-size: 44px;
+  padding-top: 20px;
+}
+.playerName::before {
+  content: url(./images/Icon\ material-person.svg);
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+.gameLevel::before {
+  content: url(./images/Icon\ awesome-gamepad.svg);
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+.Scoreboard {
+  color: white;
+  border: 1px solid #ff5155;
+  width: 300px;
+  padding: 20px 50px;
+  margin: 15px;
+  height: 60vh;
+  border-radius: 10px;
+  border: 2px solid #ff5155;
+  overflow-y: scroll;
+}
+.Scoreboard--heading {
+  color: #ff5155;
+  font-size: 30px;
+  text-align: center;
+}
+.Scoreboard--subheading {
+  color: #ff5155;
+  font-size: 11px;
+}
+.gameArea {
+  position: absolute;
+  left: 50%;
+  /* top: 40%; */
+  top: 10%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.gameWord {
+  font-size: 92px;
+  line-height: 1.2;
+}
+.gameInput {
+  opacity: 0.7;
+  border-radius: 5px;
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
+  background-color: #b8b8b8;
+  padding: 10px;
+  min-width: 400px;
+  font-size: 35px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.match {
+  color: #54ba18;
+}
+.notMatch {
+  color: #445298;
+}
+.display-score {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.game-timer {
+  font-size: 32px;
+}
+
+@media (max-width: 575.98px) {
+  .home-page-wrapper .heading-text {
+    font-size: 52px;
+  }
+  .sub-text::before,
+  .sub-text::after {
+    width: 10%;
+  }
+}
+
+.base-timer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__label {
+  position: absolute;
+
+  /* Size should match the parent container */
+  width: 300px;
+  height: 300px;
+
+  /* Keep the label aligned to the top */
+  top: 0;
+
+  /* Create a flexible box that centers content vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Sort of an arbitrary number; adjust to your liking */
+  font-size: 48px;
+}
+.base-timer__path-remaining {
+  /* Just as thick as the original ring */
+  stroke-width: 7px;
+
+  /* Rounds the line endings to create a seamless circle */
+  stroke-linecap: round;
+
+  /* Makes sure the animation starts at the top of the circle */
+  transform: rotate(90deg);
+  transform-origin: center;
+
+  /* One second aligns with the speed of the countdown timer */
+  transition: 0.1s linear all;
+
+  /* Allows the ring to change color when the color value updates */
+  stroke: currentColor;
+}
+
+.base-timer__svg {
+  /* Flips the svg and makes the animation to move left-to-right */
+  transform: scaleX(-1);
+}
+
+.base-timer__path-remaining.green {
+  color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+.word-block {
+  text-shadow: 0 0 16px rgb(0 0 0 / 16%);
+  font-family: Arial;
+  font-size: 5rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.gamepage-wrapper {
+  height: 100%;
+}
+.playarea {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.highscore::before {
+  content: "Personal Best";
+  display: block;
+  color: #ff5155;
+  font-size: 11px;
+}
+.highscore {
+  color: #ff5155;
+}
+
+.Scoreboard {
+  scrollbar-color: #808080 #1d2e32;
+  scrollbar-width: 16px;
+}
+.Scoreboard::-webkit-scrollbar {
+  width: 16px;
+}
+.Scoreboard::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border-radius: 20px;
+  outline: none;
+}
+@media (max-width: 991.98px) {
+  .playarea {
+    position: unset;
+    transform: none;
+    margin: 0 20px;
+  }
+  .main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  body {
+    /* height: 100%; */
+  }
+  .gameInput {
+    width: 100%;
+    min-width: unset;
+  }
+  .Scoreboard {
+    width: unset;
+    font-size: 22px;
+  }
+  .stop-btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+  }
+  .body-wrapper {
+    height: 100%;
+  }
+  header {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+  .score {
+    text-align: right;
+  }
+  .gamename {
+    height: 50px;
+    text-align: right;
+    line-height: 2;
+  }
+  .display-score {
+    left: 55%;
+  }
+}
+@media (max-width: 575.98px) {
+  .form {
+    max-width: 100%;
+  }
+}
